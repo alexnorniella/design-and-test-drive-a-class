@@ -1,7 +1,6 @@
 from lib.music_tracker import *
 import pytest
 
-
 def test_given_a_song():
     music_tracker = MusicTracker()
     music_tracker.add_track('Numb')
@@ -15,8 +14,6 @@ def test_given_two_songs():
     assert music_tracker.list_tracks() == ['Numb', 'Piano Man']
 
 
-
-
 # '''
 # Given an empty string,
 # Throw an error
@@ -25,9 +22,11 @@ def test_given_two_songs():
 # music_tracker = MusicTracker()
 # music_tracker.add_track('') # == Error 'Invalid Song Name'
 
-
-
-
+def test_given_empty_string_song():
+    music_tracker = MusicTracker()
+    with pytest.raises(Exception) as e:
+            music_tracker.add_track('')
+    assert str(e.value) == 'Invalid Song Name'
 
 
 # '''
